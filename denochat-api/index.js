@@ -10,7 +10,7 @@ books.set("1", {
 const router = new Router();
 router
 	.get("/", (context) => {
-		context.response.body = "Hello world!";
+		context.response.body = "Hello world! K";
 	})
 	.get("/book", (context) => {
 		context.response.body = Array.from(books.values());
@@ -24,5 +24,14 @@ router
 const app = new Application();
 app.use(router.routes());
 app.use(router.allowedMethods());
+// app.addEventListener("listen", ({ hostname, port, secure }) => {
+// 	console.log(
+// 		`Listening on: ${secure ? "https://" : "http://"}${
+// 			hostname ?? "localhost"
+// 		}:${port}`
+// 	);
+// });
+
+// await app.listen({ port: 8000 });
 
 addEventListener("fetch", app.fetchEventHandler());
